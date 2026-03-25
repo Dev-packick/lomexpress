@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>lomeXpress – Articles solaires &amp; produits importés</title>
+    <meta name="description" content="Stock local, livraison 24h (weekend inclus), commandes spéciales depuis Alibaba, Temu, Shein..."/>
+    <link rel="icon" type="image/png" href="uploads/LG4.jpeg"/>
+    <link rel="apple-touch-icon" href="uploads/LG4.jpeg"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="site-header" id="main-header">
+    <div class="container nav-inner">
+        <a class="brand" href="#">
+            <div class="brand-mark">🌿</div>
+            <div>
+                <span class="brand-name">lomeXpress</span>
+                <span class="brand-sub">Lomé · Togo</span>
+            </div>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#catalog">Catalogue</a></li>
+                <li><a href="#categories">Catégories</a></li>
+                <li><a href="#special">Commande spéciale</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="dashboard.html" style="color:var(--a500)">Admin</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <button class="btn-cart" onclick="openModal('cartModal')">
+                🛒 Panier
+                <span class="cart-badge" id="cart-badge">0</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-grain"></div>
+    <div class="container hero-inner">
+        <div class="hero-text">
+            <div class="hero-tag"><span class="tag-dot"></span> Stock local · Livraison 24h</div>
+            <h1 class="hero-h1">Articles <em>solaires</em> &amp;<br>produits importés,<br>au meilleur prix.</h1>
+            <p class="hero-lead">Commandes spéciales depuis Alibaba, Temu, Shein... livré directement à Lomé.</p>
+            <div class="hero-btns">
+                <a class="btn-amber" href="#catalog">Voir le catalogue →</a>
+                <a class="btn-ghost" href="#special">Commande spéciale</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="stat-val">24h</div>
+                    <div class="stat-lbl">Livraison locale</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="stat-val" id="hero-sku">—</div>
+                    <div class="stat-lbl" id="hero-sku-lbl">Produits en stock</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="stat-val">7j/7</div>
+                    <div class="stat-lbl">Disponible</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-card">
+                <div class="hero-card-icon">☀️</div>
+                <div class="hero-pills">
+                    <span class="hero-pill">🔋 Solaire</span>
+                    <span class="hero-pill">🏠 Maison</span>
+                    <span class="hero-pill">🚗 Auto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-list">
+            <div class="trust-item"><div class="trust-icon">🚚</div> Livraison 24h weekend inclus</div>
+            <div class="trust-item"><div class="trust-icon">📦</div> Stock local immédiat</div>
+            <div class="trust-item"><div class="trust-icon">🌍</div> Commandes internationales</div>
+            <div class="trust-item"><div class="trust-icon">📞</div> +228 71 79 34 79</div>
+        </div>
+    </div>
+</div>
+
+<section class="section" id="categories">
+    <div class="container">
+        <div class="reveal">
+            <div class="section-label">Explorer</div>
+            <h2 class="section-title">Nos catégories</h2>
+        </div>
+        <div class="cats-grid stagger" style="margin-top:2rem">
+            <div class="cat-card" onclick="filterCat('solar')"><div class="cat-emoji">☀️</div><div class="cat-name">Produits solaires</div></div>
+            <div class="cat-card" onclick="filterCat('home')"><div class="cat-emoji">🏠</div><div class="cat-name">Maison</div></div>
+            <div class="cat-card" onclick="filterCat('car')"><div class="cat-emoji">🚗</div><div class="cat-name">Auto</div></div>
+            <div class="cat-card" onclick="filterCat('fashion')"><div class="cat-emoji">👗</div><div class="cat-name">Mode</div></div>
+            <div class="cat-card" onclick="filterCat('connected')"><div class="cat-emoji">📡</div><div class="cat-name">Connecté</div></div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="catalog">
+    <div class="container">
+        <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem">
+            <div>
+                <div class="section-label">En stock</div>
+                <h2 class="section-title">Catalogue</h2>
+            </div>
+            <div class="filter-bar" id="filter-bar">
+                <button class="filter-btn active" data-filter="all" onclick="filterProducts('all',this)">Tous</button>
+                <button class="filter-btn" data-filter="solar" onclick="filterProducts('solar',this)">☀️ Solaire</button>
+                <button class="filter-btn" data-filter="home" onclick="filterProducts('home',this)">🏠 Maison</button>
+                <button class="filter-btn" data-filter="car" onclick="filterProducts('car',this)">🚗 Auto</button>
+                <button class="filter-btn" data-filter="fashion" onclick="filterProducts('fashion',this)">👗 Mode</button>
+                <button class="filter-btn" data-filter="connected" onclick="filterProducts('connected',this)">📡 Connecté</button>
+            </div>
+        </div>
+        <div class="products-grid" id="products-grid">
+            <div id="products-loading" style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted)">Chargement...</div>
+        </div>
+    </div>
+</section>
+
+<section class="special-section" id="special">
+  <div class="container">
+    <div class="special-grid">
+      <div class="special-info reveal">
+        <div class="section-label">Service exclusif</div>
+        <h2 class="section-title">Commande spéciale</h2>
+        <p>Vous avez repéré un produit sur une plateforme internationale ? Nous nous chargeons de le commander et de vous le livrer directement à Lomé.</p>
+        <div class="platform-pills">
+          <span class="platform-pill">🛍 Alibaba</span>
+          <span class="platform-pill">🛒 Temu</span>
+          <span class="platform-pill">👗 Shein</span>
+          <span class="platform-pill">📦 Vogihon</span>
+        </div>
+      </div>
+
+      <div class="form-card reveal">
+        <div class="form-title">🛒 Faire une demande</div>
+        <form id="specialOrderForm" onsubmit="handleSpecialOrder(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Nom du produit</label>
+              <input name="product_name" class="form-input" placeholder="Ex. Sneakers XYZ..." required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Lien ou Plateforme</label>
+              <input name="product_link" class="form-input" type="text" placeholder="https://... ou nom du site"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Budget (FCFA)</label>
+              <input name="budget" class="form-input" type="number" placeholder="Votre budget max"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">WhatsApp</label>
+              <input name="client_phone" class="form-input" placeholder="+228..." required/>
+            </div>
+            <div class="form-group full">
+              <label class="form-label">Message / Détails</label>
+              <textarea name="details" class="form-textarea" placeholder="Taille, couleur, quantité..."></textarea>
+            </div>
+          </div>
+          <button class="btn-submit" type="submit">Envoyer sur WhatsApp & Dashboard →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="payment">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:1.8rem">
+      <div class="section-label">Paiement</div>
+      <h2 class="section-title">Modes de paiement acceptés</h2>
+    </div>
+    <div class="payment-card reveal">
+      <div class="payment-icon">💳</div>
+      <div class="payment-text">
+        <h3>Mix by Yass & Flooz (Moov Togo)</h3>
+        <p>Nous acceptons les paiements mobiles locaux. Veuillez toujours confirmer le montant total avec nous avant d'effectuer le transfert.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:2rem">
+      <div class="section-label">Nous joindre</div>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-card reveal">
+        <h3>lomeXpress</h3>
+        <p>Stock local immédiat, commandes spéciales internationales, livraison 7j/7.</p>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-text">+228 71 79 34 79</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div class="contact-text">
+            <a href="https://wa.me/22871793479" target="_blank">Écrire sur WhatsApp</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-text">contact@lomexpress.tg</div>
+        </div>
+      </div>
+
+      <div class="contact-form-card reveal">
+        <div class="form-title">Envoyer un message</div>
+        <form onsubmit="handleContact(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Votre nom</label>
+              <input class="form-input" placeholder="Jean Dupont" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Votre email</label>
+              <input class="form-input" type="email" placeholder="jean@exemple.tg" required/>
+            </div>
+            <div class="form-group full">
+              <label class="form-label">Message</label>
+              <textarea class="form-textarea" placeholder="Votre message…" required></textarea>
+            </div>
+          </div>
+          <button class="btn-submit" type="submit">Envoyer le message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="site-footer">
+  <div class="container">
+
+    <!-- Partie haute -->
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="brand-name">lomeXpress</span>
+        <p>Votre partenaire de confiance pour le solaire et l'importation directe à Lomé.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Boutique</h4>
+        <ul>
+          <li><a href="#catalog">Catalogue</a></li>
+          <li><a href="#categories">Catégories</a></li>
+          <li><a href="#special">Commande spéciale</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Infos</h4>
+        <ul>
+          <li><a href="#payment">Paiement</a></li>
+          <li><a href="#">CGV</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+22871793479">+228 71 79 34 79</a></li>
+          <li><a href="mailto:contact@lomexpress.tg">contact@lomexpress.tg</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Partie basse -->
+    <div class="footer-bottom">
+      <span>© <span id="footer-year"></span> lomeXpress — Tous droits réservés</span>
+      <div class="footer-links">
+        <a href="#">Confidentialité</a>
+        <a href="#">Mentions légales</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<div class="modal-overlay" id="productModal">
+    <div class="modal-panel">
+        <div class="modal-head">
+            <strong id="modal-name">Produit</strong>
+            <button class="modal-close" onclick="closeModal('productModal')">✕</button>
+        </div>
+        <div class="modal-body">
+            <div id="modal-media-container" class="product-media-slider">
+                </div>
+            <div class="product-price" id="modal-price" style="font-size:1.5rem;margin-bottom:.6rem">—</div>
+            <p id="modal-desc" style="color:var(--muted);font-size:.92rem;line-height:1.6;margin-bottom:1.2rem">—</p>
+            <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+                <button class="btn-add" id="modal-cart-btn" style="flex:1">Ajouter au panier</button>
+                <button class="btn-view-sm" onclick="closeModal('productModal')">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="cartModal">
+    <div class="modal-panel">
+        <div class="modal-head"><strong>Votre panier</strong><button class="modal-close" onclick="closeModal('cartModal')">✕</button></div>
+        <div class="modal-body">
+            <div id="cart-items"></div>
+            <div id="cart-footer" style="display:none;padding-top:1rem;border-top:1px solid var(--border);margin-top:.5rem">
+                <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:1rem">
+                    <span>Total</span><span id="cart-total" style="color:var(--g600)">0 FCFA</span>
+                </div>
+                <button class="btn-submit" onclick="checkout()">Commander sur WhatsApp →</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"><span id="toast-icon">✅</span> <span id="toast-msg"></span></div>
+
+<script src="scripts.js"></script>
+
+</body>
+</html>

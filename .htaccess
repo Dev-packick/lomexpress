@@ -1,0 +1,12 @@
+# Empêcher l'accès direct aux fichiers JSON
+<Files "*.json">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Empêcher le listage des dossiers (pour que personne ne voie tes fichiers uploads)
+Options -Indexes
+
+# Augmenter la taille maximale d'envoi pour tes vidéos/images (Optionnel)
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
