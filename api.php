@@ -33,7 +33,7 @@ if ($action === 'list') {
         $r['media'] = json_decode($r['images'], true) ?: [];
         $r['stock'] = $r['stock'] ?? 'local';
         // AJOUT DE CETTE LIGNE : On crée 'desc' pour le JS à partir de 'description'
-        $r['desc'] = $r['description'] ?? '';
+        $r['desc'] = $r['description'] ?? ''; 
     }
     echo json_encode(['ok' => true, 'products' => $rows]);
 }
